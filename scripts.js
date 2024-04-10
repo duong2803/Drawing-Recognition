@@ -1,30 +1,22 @@
 const canvas = document.querySelector('.drawing-field')
 const header = document.querySelector('.header')
-// canvas.height = window.innerHeight
-// canvas.width = window.innerWidth
-
 const headerH = header.getBoundingClientRect().height
 
-const updateCanvasSize = () => {
-    const canvasW = canvas.getBoundingClientRect().width
-    const canvasH = canvas.getBoundingClientRect().height
-    canvas.height = canvasH
-    canvas.width = canvasW
-}
-
-const drawLine = () =>{
-
-}
-
 const ctx = canvas.getContext('2d')
-
-ctx.lineWidth = 5
 
 let X = null
 let Y = null
 
+const drawLine = (ctx, X, Y, toX, toY) => {
+    ctx.beginPath()
+    ctx.moveTo(X, Y)
+    ctx.lineTo(toX, toY)
+    ctx.stroke()
+}
+
 let draw = false
 
+// Drawing canvas
 window.addEventListener("mousemove", (e) => {
     if (X == null || Y == null) {
         X = e.clientX;
@@ -35,11 +27,9 @@ window.addEventListener("mousemove", (e) => {
     let curX = e.clientX
     let curY = e.clientY - headerH
 
+
     if (draw) {
-        ctx.beginPath()
-        ctx.moveTo(X, Y)
-        ctx.lineTo(curX, curY)
-        ctx.stroke()
+        drawLine(ctx, X, Y, curX, curY)
     }
 
     X = curX
@@ -47,8 +37,6 @@ window.addEventListener("mousemove", (e) => {
 })
 
 window.addEventListener('mousedown', (e) => {
-    console.log(e.clientX)
-    console.log(e.clientY)
     draw = true
 })
 
@@ -58,6 +46,29 @@ window.addEventListener('mouseup', (e) => {
     draw = false
 })
 
-window.addEventListener('resize', (e) =>{
+// Handle the case when user resizes the web page
+const updateCanvasSize = () => {
+    const W = canvas.width, H = canvas.height
+    let tmp = ctx.getImageData(0, 0, W, H)
+    const canvasW = canvas.getBoundingClientRect().width
+    const canvasH = canvas.getBoundingClientRect().height
+    canvas.height = canvasH
+    canvas.width = canvasW
+    ctx.putImageData(tmp, 0, 0)
+    ctx.lineWidth = 5
+    ctx.fillStyle = "red"
+}
+
+window.addEventListener('resize', (e) => {
     updateCanvasSize()
 })
+
+updateCanvasSize()
+
+// Clear utility
+const clearCanvas = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+}
+
+const clearBtn = document.querySelector('.clear-btn')
+clearBtn.addEventListener('click', clearCanvas)
