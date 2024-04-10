@@ -6,5 +6,5 @@ Simple rule: The first one finished 5 drawings wins
 
 - No Pay-2-Win
 
-- Modern graphics + Smoothing experience
+- Modern graphics + Smooth experience
 
