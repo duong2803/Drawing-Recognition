@@ -1,6 +1,6 @@
 # Drawing Battle - Online drawing 1v1 game  
 
-The first one finished 5 drawings wins
+Simple rule: The first one finished 5 drawings wins
 
 - Skill issue
 
