@@ -2,6 +2,9 @@
 
 The first one finished 5 drawings wins
 
-Skill issue
+- Skill issue
 
-No Pay-2-Win
+- No Pay-2-Win
+
+- Modern graphics + Smoothing experience
+
