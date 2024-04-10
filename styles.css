@@ -1,0 +1,56 @@
+:root {
+    --darkyellow: #ebe134;
+    --gradvio: linear-gradient(#722AE6, #E4B5CB)
+}
+
+body {
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 90vh;
+}
+
+.header {
+    display: flex;
+    background-image: var(--gradvio);
+    padding: 5px;
+    border: 5px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 5px 5px rgb(190, 155, 190);
+}
+
+.timer-field {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toolbar {
+    padding: 10px;
+    height: 100%;
+    padding: 15px
+}
+
+button {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+    background-color: green;
+}
+
+.drawing-field {
+    height: 100%;
+    width: 100%;
+    /* background-color:darkgrey; */
+}
