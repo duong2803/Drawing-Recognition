@@ -72,3 +72,22 @@ const clearCanvas = () => {
 
 const clearBtn = document.querySelector('.clear-btn')
 clearBtn.addEventListener('click', clearCanvas)
+
+// Save utility (Test)
+
+
+const saveCanvas = () => {
+
+    const savePng = () => {
+        const imgUrl = canvas.toDataURL('image/png')
+        const link = document.createElement('a')
+        link.download = 'grayscale.png'
+        link.href = imgUrl
+        link.click()
+    }
+
+    savePng()
+}
+
+const saveBtn = document.querySelector('.save-btn')
+saveBtn.addEventListener('click', saveCanvas)
