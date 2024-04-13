@@ -13,8 +13,8 @@ body {
     box-sizing: border-box;
 }
 
-.container {
-    height: 90vh;
+#container {
+    height: 100vh;
 }
 
 .header {
@@ -55,6 +55,16 @@ body {
     height: 100%;
 }
 
+#drawing-field{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 button {
     font-size: 20px;
     cursor: pointer;
@@ -65,8 +75,12 @@ button {
     background-color: green;
 }
 
-.drawing-field {
-    height: 100%;
-    width: 100%;
-    /* background-color:darkgrey; */
+canvas {
+    transform: translate(-5%, -50%);
+    border: 2px solid black;
+    position: fixed;
+}
+
+.prediction{
+    margin-top: 200px;
 }

@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./libraries/p5.min.js"></script>
+    <script src="./libraries/p5.dom.min.js"></script>
     <link rel="stylesheet" href="./styles.css">
+    <script src="./sketch.js"></script>
 </head>
 
 <body>
-    <div class="container">
+    <div id="container">
         <div class="header">
             <div class="timer-field">
                 <h1 class="timer">Timer: 60</h1>
@@ -25,18 +28,17 @@
             </div>
             <div class="toolbar">
                 <button class="clear-btn">Clear</button>
-                <button class="save-btn">
-                    Save
-                    <!-- <a class="save-ref" href="">Save</a> -->
-                </button>
+                <button class="save-btn">Predict</button>
             </div>
         </div>
-        <canvas class="drawing-field">
-
-        </canvas>
+        <div id="drawing-field">
+            <div class="prediction">
+                <h1 class="prediction-text">Prediction: </h1>
+            </div>
+        </div>
+        
     </div>
 
-    <script src="./scripts.js"></script>
 </body>
 
 </html>
