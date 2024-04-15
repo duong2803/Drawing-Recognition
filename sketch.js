@@ -1,5 +1,4 @@
 function setup() {
-
     const canvas = createCanvas(280, 280)
     canvas.parent('drawing-field')
 
@@ -51,7 +50,7 @@ function setup() {
         const predictionText = document.querySelector('.prediction-text')
         predictionText.innerHTML = "Prediction:"
         predictionText.innerHTML += "<br/>"
-        for(let i = 0; i < prediction.length; ++i){
+        for (let i = 0; i < prediction.length; ++i) {
             predictionText.innerHTML += `${prediction[i]}(${Number(probability[i]).toFixed(2)}%)`
             predictionText.innerHTML += "<br/>"
         }

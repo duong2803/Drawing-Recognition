@@ -33,19 +33,19 @@ body {
     align-items: center;
 }
 
-.timer{
+.timer {
     padding: 10px
 }
 
-.drawing-chooser-field{
+.drawing-chooser-field {
     display: flex;
 }
 
-.chooser-label{
+.chooser-label {
     padding: 10px
 }
 
-.drawing-chooser-btn{
+.drawing-chooser-btn {
     margin: 0;
     padding: 10px 20px 10px 20px
 }
@@ -55,7 +55,7 @@ body {
     height: 100%;
 }
 
-#drawing-field{
+#drawing-field {
     height: 100%;
     width: 100%;
     display: flex;
@@ -81,6 +81,6 @@ canvas {
     position: fixed;
 }
 
-.prediction{
+.prediction {
     margin-top: 200px;
 }
