@@ -1,4 +1,4 @@
-# Drawing Battle - Online drawing multiplayer game  
+# Drawing Battle - Online Drawing Multiplayer Game  
 
 ## Rules
 The game will use the rule identical to ICPC format:
