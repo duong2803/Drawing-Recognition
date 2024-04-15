@@ -25,7 +25,8 @@ body {
     display: flex;
     padding: 5px;
     border: 5px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: center;
     align-items: center;
     border-width: 10px;
     border-color: green;
