@@ -51,7 +51,7 @@ function setup() {
         predictionText.innerHTML = "Prediction:"
         predictionText.innerHTML += "<br/>"
         for (let i = 0; i < prediction.length; ++i) {
-            predictionText.innerHTML += `${prediction[i]}(${Number(probability[i]).toFixed(2)}%)`
+            predictionText.innerHTML += `${prediction[i]}(${Number(probability[i] * 100).toFixed(2)}%)`
             predictionText.innerHTML += "<br/>"
         }
     })
