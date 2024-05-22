@@ -8,7 +8,6 @@
     <script src="./libraries/p5.min.js"></script>
     <script src="./libraries/p5.dom.min.js"></script>
     <link rel="stylesheet" href="./styles.css">
-    <script src="./sketch.js"></script>
 </head>
 
 <body>
@@ -27,18 +26,26 @@
                 <button class="drawing-chooser-btn">5</button>
             </div>
             <div class="toolbar">
-                <button class="clear-btn">Clear</button>
-                <button class="save-btn">Submit</button>
+                <button class="exit-btn">Exit</button>
             </div>
         </div>
         <div id="drawing-field">
-            <div class="prediction">
-                <h1 class="prediction-text">Prediction: </h1>
+            <div id="question">
+                <h1>Draw a tiger</h1>
             </div>
+
+            <div id="canvas-field"> </div>
+
+            <div id="toolbar">
+                <button class="clear-btn">Clear</button>
+                <button class="submit-btn">Submit</button>
+            </div>
+
         </div>
 
     </div>
 
+    <script src="./sketch.js"></script>
 </body>
 
 </html>

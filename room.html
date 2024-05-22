@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drawing Battle - Room</title>
+
+    <script src="./libraries/p5.min.js"></script>
+    <script src="./libraries/p5.dom.min.js"></script>
     <link rel="stylesheet" href="./room.css">
+    <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
@@ -26,14 +30,55 @@
             </div> -->
         </div>
         <div id="select-field">
-            <button class="return-btn">Quay lại</button>
-            <button class="ready-btn">Sẵn sàng</button>
+            <button class="return-btn">Return</button>
+            <button class="ready-btn">Ready</button>
         </div>
     </div>
 
+    <div id="container2" style="display: none;">
+        <div class="header">
+            <div class="timer-field">
+                <h1 class="timer"> Timer: <span id="countdown">60</span></h1>
+            </div>
+
+            <div class="drawing-chooser-field">
+                <h1 class="chooser-label">Level: </h1>
+                <button class="drawing-chooser-btn">1</button>
+                <button class="drawing-chooser-btn">2</button>
+                <button class="drawing-chooser-btn">3</button>
+                <button class="drawing-chooser-btn">4</button>
+                <button class="drawing-chooser-btn">5</button>
+            </div>
+            <div class="toolbar">
+                <button class="exit-btn">Exit</button>
+            </div>
+        </div>
+        <div id="drawing-field">
+            <div id="question">
+                <h1>Draw a tiger</h1>
+            </div>
+
+            <div id="canvas-field"> </div>
+
+            <div id="toolbar">
+                <button class="clear-btn">Clear</button>
+                <button class="submit-btn">Submit</button>
+            </div>
+
+        </div>
+    </div>
     <div id="toastContainer"></div>
 
+    <div class="modal" id="modal">
+        <div class="quit-modal">
+            <p class="modal-content">Do you want to quit?</p>
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
     <script src="./room.js"></script>
+    <!-- <script src="./sketch.js"></script> -->
 </body>
 
 </html>

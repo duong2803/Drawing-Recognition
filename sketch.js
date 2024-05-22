@@ -1,41 +1,56 @@
+// const playerId = window.localStorage.getItem('playerId')
+// const roomName = window.localStorage.getItem('roomName')
+
+// const socket = new WebSocket(`ws://127.0.0.1:8000/ws/drawing/game/${roomName}/${playerId}`)
+// var questions
+
+// socket.addEventListener('open', () => {
+//     console.log('Game joined!!')
+// })
+
+// socket.addEventListener('message', (e) => {
+//     const data = JSON.parse(e.data)
+//     console.log(data)
+
+//     const type = data['type']
+//     const payload = data['payload']
+
+//     switch (type) {
+//         case 'questions': {
+//             const questions = JSON.parse(payload['questions'])
+//             console.log(questions)
+
+//             const drawingChooserBtns = document.querySelectorAll('.drawing-chooser-btn')
+//             for (let i = 0; i < questions.length; ++i) {
+//                 drawingChooserBtns[i].setAttribute('value', questions[i])
+//             }
+//             break
+//         }
+//     }
+
+// })
+
+// socket.addEventListener('close', () => {
+
+// })
+
 function setup() {
     const canvas = createCanvas(280, 280)
-    canvas.parent('drawing-field')
+    canvas.parent('canvas-field')
 
     canvas.background(255)
 
-    // Clear utility
     const clearBtn = document.querySelector('.clear-btn')
     clearBtn.addEventListener('click', () => {
         canvas.background(255)
     })
 
-    // Save utility
-    // const saveBtn = document.querySelector('.save-btn')
-    const saveBtn = select('.save-btn')
-    const getPrediction = async (url, data) => {
-        try {
-            const res = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data)
-            })
-            if (res.status != 200) return
-            const prediction = await res.json()
-            return prediction
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    const submitBtn = select('.submit-btn')
 
-
-    saveBtn.mousePressed(async () => {
+    submitBtn.mousePressed(async () => {
         let img = canvas.get()
         img.resize(28, 28)
         img.loadPixels()
-        // console.log(img.pixels)
         const grid = []
         for (let i = 0; i < 784; ++i) {
             grid[i] = (255 - img.pixels[i * 4]) / 255
@@ -43,17 +58,7 @@ function setup() {
         const data = {
             grid: grid
         }
-        const res = await getPrediction('http://localhost:8000/get-prediction/', data)
-        const prediction = res['prediction']
-        const probability = res['probability']
-
-        const predictionText = document.querySelector('.prediction-text')
-        predictionText.innerHTML = "Prediction:"
-        predictionText.innerHTML += "<br/>"
-        for (let i = 0; i < prediction.length; ++i) {
-            predictionText.innerHTML += `${prediction[i]}(${Number(probability[i] * 100).toFixed(2)}%)`
-            predictionText.innerHTML += "<br/>"
-        }
+        // const res = await getPrediction('http://localhost:8000/get-prediction/', data)
     })
 }
 
@@ -66,3 +71,11 @@ function draw() {
         line(pmouseX, pmouseY, mouseX, mouseY)
     }
 }
+
+const exitBtn = document.querySelector('.exit-btn')
+
+exitBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    localStorage.clear()
+    window.location.href = './lobby.html'
+})

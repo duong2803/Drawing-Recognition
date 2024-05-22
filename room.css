@@ -92,25 +92,33 @@ body {
 }
 
 .toast {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #333;
-  color: #fff;
-  padding: 15px 20px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  margin-bottom: 10px; /* Add margin to separate notifications */
-  z-index: 1000;
-  transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    /* Add margin to separate notifications */
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .hide {
-  opacity: 0;
-  pointer-events: none;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .top-right {
-  top: 20px;
-  right: 20px;
+    top: 20px;
+    right: 20px;
 }
+
+
+
+
+
+/* ------------------------------------------------------------- */
