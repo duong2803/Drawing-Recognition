@@ -2,6 +2,7 @@ const playerName = window.localStorage.getItem('playerName')
 const roomName = window.localStorage.getItem('roomName')
 
 const socket = new WebSocket(`ws://127.0.0.1:8000/ws/drawing/room/${roomName}/${playerName}`)
+// const socket = new WebSocket(`ws://192.168.1.2:8000/ws/drawing/room/${roomName}/${playerName}`)
 
 socket.addEventListener('open', () => {
 	console.log('Connection established.')
@@ -118,6 +119,10 @@ socket.addEventListener('message', (e) => {
 		}
 
 		case 'start_game': {
+
+
+			const readyBtn = document.querySelector('.ready-btn')
+			readyBtn.innerHTML = 'Ready'
 			// window.location.href = './index.html'
 			const room = document.querySelector('#container')
 			// room.classList.remove('active')
@@ -167,7 +172,14 @@ socket.addEventListener('message', (e) => {
 		case 'game_end': {
 			console.log('End game')
 			showNotification('<i class="fa-regular fa-clock"></i> Time\'s up!', 'font-size: 30px')
+			const event = new Event('click')
+			document.querySelector('.clear-btn').dispatchEvent(event)
 
+			const drawingChooserBtns = document.querySelectorAll('.drawing-chooser-btn')
+			const color = '#354154'
+			for (const btn of drawingChooserBtns) {
+				btn.style.backgroundColor = color
+			}
 			timerValue = 60
 			clearInterval(intervalId)
 			break
@@ -188,6 +200,22 @@ socket.addEventListener('message', (e) => {
 			})
 
 			console.log(scoreboard)
+
+			const players = [
+				// { name: 'Player 1', points: 10, penalty: 2 },
+				// { name: 'Player 2', points: 15, penalty: 3 },
+				// { name: 'Player 3', points: 8, penalty: 1 }
+			];
+
+			for(const result of scoreboard){
+				players.push({
+					name: result.name,
+					points: result.solved,
+					penalty: result.penalty
+				})
+			}
+			populateScoreboard(players)
+
 			let rank = 0
 
 			for (let i = 0; i < scoreboard.length; ++i) {
@@ -206,6 +234,8 @@ socket.addEventListener('message', (e) => {
 
 			yesBtn.addEventListener('click', function () {
 
+				const scoreboard = document.querySelector('#scoreboardTable')
+				scoreboard.style.display = 'none'
 				localStorage.clear()
 				closeModal();
 
@@ -214,6 +244,8 @@ socket.addEventListener('message', (e) => {
 
 			noBtn.addEventListener('click', function () {
 
+				const scoreboard = document.querySelector('#scoreboardTable')
+				scoreboard.style.display = 'none'
 				const room = document.querySelector('#container')
 				// room.classList.remove('active')
 				room.style.display = 'flex'
@@ -403,5 +435,32 @@ function openModal(content) {
 
 function closeModal() {
 	modal.style.display = 'none';
+}
+
+
+
+function populateScoreboard(players) {
+	const tbody = document.querySelector('#scoreboardTable tbody');
+	tbody.innerHTML = '';
+
+	players.forEach(player => {
+		const row = document.createElement('tr');
+
+		const nameCell = document.createElement('td');
+		nameCell.textContent = player.name;
+		row.appendChild(nameCell);
+
+		const pointsCell = document.createElement('td');
+		pointsCell.textContent = player.points;
+		row.appendChild(pointsCell);
+
+		const penaltyCell = document.createElement('td');
+		penaltyCell.textContent = player.penalty;
+		row.appendChild(penaltyCell);
+
+		tbody.appendChild(row);
+	});
+	const scoreboard = document.querySelector('#scoreboardTable')
+	scoreboard.style.display = 'table'
 }
 

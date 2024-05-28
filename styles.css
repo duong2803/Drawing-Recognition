@@ -104,8 +104,9 @@ button {
     display: none;
     position: fixed;
     z-index: 1;
-    left: 0;
-    top: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -118,7 +119,7 @@ button {
     padding: 40px;
     border: 1px solid #888;
     min-width: 500px;
-    min-height: 250px;
+    min-height: 450px;
     width: 30%;
     height: 30%;
     text-align: center;
@@ -129,7 +130,39 @@ button {
 
 .quit-modal>button {
     padding: 10px 20px 10px 20px;
-    margin: 25px;
-    margin-top: 70px;
+    margin: 15px;
+    margin-top: 50px;
     font-size: 40px
+}
+
+#scoreboardTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#scoreboardTable th, #scoreboardTable td {
+    /* border: 1px solid #ddd; */
+    padding: 12px;
+    text-align: center; /* Center horizontally */
+    vertical-align: middle; /* Center vertically */
+}
+
+#scoreboardTable th {
+    background-color: #1f2c40;
+    color: white;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+#scoreboardTable tr:nth-child(even) {
+    background-color: #1f2c40;
+}
+
+#scoreboardTable tr:hover {
+    background-color: #1f2c40;
+}
+
+#scoreboardTable td {
+    font-size: 14px;
 }
